@@ -1,5 +1,5 @@
 module ZendeskSearch
-  class User < Dry::Struct::Value
+  class User < BaseModel
     attribute :_id,             Types::Coercible::Int
     attribute :organization_id, Types::Coercible::Int
 

@@ -1,5 +1,5 @@
 module ZendeskSearch
-  class Ticket < Dry::Struct::Value
+  class Ticket < BaseModel
     attribute :_id,             Types::Coercible::String
     attribute :submitter_id,    Types::Coercible::Int
     attribute :assignee_id,     Types::Coercible::Int

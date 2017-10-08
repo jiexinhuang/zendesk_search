@@ -1,5 +1,5 @@
 module ZendeskSearch
-  class Organization < Dry::Struct::Value
+  class Organization < BaseModel
     attribute :_id,             Types::Coercible::Int
 
     attribute :url,             Types::Coercible::String

@@ -4,4 +4,5 @@ $LOAD_PATH << File.join(__FILE__, '..', '..', 'lib')
 
 require 'zendesk_search'
 
-ZendeskSearch::Application.new()
+puts 'Welcome to Zendesk search!'
+ZendeskSearch::Application.new().run

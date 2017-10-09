@@ -5,6 +5,7 @@ require 'zendesk_search/models/base_model'
 require 'zendesk_search/models/user'
 require 'zendesk_search/models/organization'
 require 'zendesk_search/models/ticket'
+require 'zendesk_search/models/data_set'
 
 module ZendeskSearch
 end

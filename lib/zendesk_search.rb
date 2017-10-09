@@ -10,4 +10,9 @@ require 'zendesk_search/utils/data_importer'
 require 'zendesk_search/application'
 
 module ZendeskSearch
+  MODEL_CLASSES = {
+    users: User,
+    organizations: Organization,
+    tickets: Ticket,
+  }.freeze
 end

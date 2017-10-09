@@ -7,6 +7,7 @@ require 'zendesk_search/models/organization'
 require 'zendesk_search/models/ticket'
 require 'zendesk_search/models/data_set'
 require 'zendesk_search/utils/data_importer'
+require 'zendesk_search/application'
 
 module ZendeskSearch
 end

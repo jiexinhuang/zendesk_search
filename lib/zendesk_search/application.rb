@@ -1,4 +1,5 @@
 require 'tty-prompt'
+require 'tty-table'
 
 module ZendeskSearch
   class Application
@@ -39,7 +40,13 @@ module ZendeskSearch
           puts 'not result found'
         else
           results.each do |row|
-            puts row.to_h
+            table = TTY::Table.new do |t|
+              row.to_h.map do |key, value|
+                t << [key, value]
+              end
+            end
+
+            puts table.render(:ascii)
           end
         end
       end

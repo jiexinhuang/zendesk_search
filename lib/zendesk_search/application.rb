@@ -18,7 +18,8 @@ module ZendeskSearch
     end
 
     def run
-      while(true) do
+      continue = true
+      while(continue) do
         # Select model to query
         model_name = prompt.select("Choose the model to query", @data_sets.keys)
         model_class = @model_classes[model_name]
@@ -49,7 +50,10 @@ module ZendeskSearch
             puts table.render(:ascii)
           end
         end
+        continue = prompt.yes?('Do you like to do another search?')
       end
+
+      puts 'Bye!'
     end
 
     def search(model_name, query_hash)

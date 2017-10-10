@@ -21,5 +21,7 @@ module ZendeskSearch
     attribute :due_at,          Types::Json::Time
 
     attribute :tags,            Types::Coercible::Array
+
+    index :_id, :organization_id
   end
 end

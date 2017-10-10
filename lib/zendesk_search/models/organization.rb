@@ -12,5 +12,7 @@ module ZendeskSearch
     attribute :created_at,      Types::Json::Time
     attribute :domain_names,    Types::Coercible::Array
     attribute :tags,            Types::Coercible::Array
+
+    index :_id, :name
   end
 end

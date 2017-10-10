@@ -22,5 +22,7 @@ module ZendeskSearch
     attribute :last_login_at,   Types::Json::Time
     attribute :created_at,      Types::Json::Time
     attribute :tags,            Types::Coercible::Array
+
+    index :_id, :name
   end
 end

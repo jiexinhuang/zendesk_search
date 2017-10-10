@@ -20,6 +20,6 @@ module ZendeskSearch
     attribute :created_at,      Types::Json::Time
     attribute :due_at,          Types::Json::Time
 
-    attribute :tags,            Types::Json::Array
+    attribute :tags,            Types::Coercible::Array
   end
 end

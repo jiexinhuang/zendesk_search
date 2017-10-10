@@ -2,6 +2,7 @@ class TestModel < ZendeskSearch::BaseModel
   attribute :_id,       ZendeskSearch::Types::Coercible::Int.optional
   attribute :name,      ZendeskSearch::Types::Coercible::String
   attribute :disabled,  ZendeskSearch::Types::Form::Bool
+  attribute :tags,      ZendeskSearch::Types::Coercible::Array
 end
 
 RSpec.describe ZendeskSearch::BaseModel do
@@ -11,11 +12,13 @@ RSpec.describe ZendeskSearch::BaseModel do
       _id: id,
       name: name,
       disabled: disabled,
+      tags: tags,
     }
   end
   let(:id) { 10 }
   let(:name) { 'Ronaldo' }
   let(:disabled) { false }
+  let(:tags) { ['portuguese', 'footballer', 'forward', 'Real Marid'] }
 
   describe '#match?' do
     subject(:match) { test_model.match?(query_hash) }
@@ -73,6 +76,28 @@ RSpec.describe ZendeskSearch::BaseModel do
           let(:query_hash) { { name: '' } }
           it { is_expected.to eq true }
         end
+      end
+    end
+
+    context 'when query for tags' do
+      context 'and one right tag is provided' do
+        let(:query_hash) { { tags: 'portuguese' } }
+        it { is_expected.to eq true }
+      end
+
+      context 'and one right tag is provided in array' do
+        let(:query_hash) { { tags: ['forward'] } }
+        it { is_expected.to eq true }
+      end
+
+      context 'and one right tag and a wrong tag are provided in array' do
+        let(:query_hash) { { tags: ['portuguese', 'Barcelona'] } }
+        it { is_expected.to eq true }
+      end
+
+      context 'and a wrong tag is provided' do
+        let(:query_hash) { { tags: ['spanish'] } }
+        it { is_expected.to eq false }
       end
     end
 

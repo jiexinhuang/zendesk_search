@@ -10,7 +10,7 @@ module ZendeskSearch
     attribute :shared_tickets,  Types::Form::Bool
 
     attribute :created_at,      Types::Json::Time
-    attribute :domain_names,    Types::Json::Array
-    attribute :tags,            Types::Json::Array
+    attribute :domain_names,    Types::Coercible::Array
+    attribute :tags,            Types::Coercible::Array
   end
 end

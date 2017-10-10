@@ -42,7 +42,9 @@ RSpec.describe ZendeskSearch::BaseModel do
   end
 
   describe '#match?' do
-    subject(:match) { test_model.match?(query_hash) }
+    let(:matching_model) { TestModel.new(query_hash) }
+    let(:attributes) { query_hash.keys }
+    subject(:match) { test_model.match?(matching_model, attributes) }
 
     context 'when query for id' do
       context 'and provides the right id(integer attribute)' do

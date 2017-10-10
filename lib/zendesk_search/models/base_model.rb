@@ -14,13 +14,12 @@ module ZendeskSearch
       schema[attribute_name].name
     end
 
-    def match?(query_hash)
-      matching_model = self.class.new(query_hash)
-      query_hash.all? do |key, value|
-        if self[key].instance_of?(Array)
-          !(self[key] & matching_model[key]).empty?
+    def match?(matching_model, attributes)
+      attributes.all? do |attr|
+        if self[attr].instance_of?(Array)
+          !(self[attr] & matching_model[attr]).empty?
         else
-          self[key] == matching_model[key]
+          self[attr] == matching_model[attr]
         end
       end
     end

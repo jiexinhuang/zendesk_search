@@ -35,7 +35,12 @@ module ZendeskSearch
         # Capture values to search for selected attributes
         query_hash = {}
         selected_attributes.each do |attr|
-          search_value = prompt.ask("Please enter search value for #{attr}, or press Enter to search for records with empty value")
+          attribute_type = model_class.attribute_type(attr)
+          if attribute_type == 'Array'
+            search_value = prompt.ask("Please enter search value for #{attr}, multiple values can be separated by comma").split(',')
+          else
+            search_value = prompt.ask("Please enter search value for #{attr}, or press Enter to search for records with empty value")
+          end
           query_hash[attr] = search_value
         end
 

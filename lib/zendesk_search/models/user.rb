@@ -1,7 +1,7 @@
 module ZendeskSearch
   class User < BaseModel
-    attribute :_id,             Types::Coercible::Int
-    attribute :organization_id, Types::Coercible::Int
+    attribute :_id,             Types::Coercible::Int.optional
+    attribute :organization_id, Types::Coercible::Int.optional
 
     attribute :url,             Types::Coercible::String
     attribute :external_id,     Types::Coercible::String

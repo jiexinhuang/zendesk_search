@@ -1,9 +1,9 @@
 module ZendeskSearch
   class Ticket < BaseModel
     attribute :_id,             Types::Coercible::String
-    attribute :submitter_id,    Types::Coercible::Int
-    attribute :assignee_id,     Types::Coercible::Int
-    attribute :organization_id, Types::Coercible::Int
+    attribute :submitter_id,    Types::Coercible::Int.optional
+    attribute :assignee_id,     Types::Coercible::Int.optional
+    attribute :organization_id, Types::Coercible::Int.optional
 
     attribute :url,             Types::Coercible::String
     attribute :external_id,     Types::Coercible::String

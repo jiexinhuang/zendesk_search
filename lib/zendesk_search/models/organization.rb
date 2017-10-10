@@ -1,6 +1,6 @@
 module ZendeskSearch
   class Organization < BaseModel
-    attribute :_id,             Types::Coercible::Int
+    attribute :_id,             Types::Coercible::Int.optional
 
     attribute :url,             Types::Coercible::String
     attribute :external_id,     Types::Coercible::String

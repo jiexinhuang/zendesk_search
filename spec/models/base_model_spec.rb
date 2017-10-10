@@ -20,6 +20,18 @@ RSpec.describe ZendeskSearch::BaseModel do
   let(:disabled) { false }
   let(:tags) { ['portuguese', 'footballer', 'forward', 'Real Marid'] }
 
+  describe '.index' do
+    before { TestModel.index('_id', 'name') }
+
+    it 'sets class instance variable as symbolized names' do
+      expect(TestModel.instance_variable_get(:@index_attributes)).to eq [:_id, :name]
+    end
+
+    it 'returns configured indexes when no params are passed in' do
+      expect(TestModel.index).to eq [:_id, :name]
+    end
+  end
+
   describe '.attribute_type' do
     it 'returns possible attribute class name for given attribute' do
       expect(TestModel.attribute_type(:_id)).to eq 'NilClass | Integer'

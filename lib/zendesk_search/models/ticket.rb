@@ -15,7 +15,7 @@ module ZendeskSearch
     attribute :via,             Types::Coercible::String
 
 
-    attribute :has_incidents,   Types::Bool
+    attribute :has_incidents,   Types::Form::Bool
 
     attribute :created_at,      Types::Json::Time
     attribute :due_at,          Types::Json::Time

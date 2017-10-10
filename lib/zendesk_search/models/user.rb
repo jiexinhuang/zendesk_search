@@ -14,10 +14,10 @@ module ZendeskSearch
     attribute :phone,           Types::Coercible::String
     attribute :signature,       Types::Coercible::String
 
-    attribute :active,          Types::Bool
-    attribute :verified,        Types::Bool
-    attribute :shared,          Types::Bool
-    attribute :suspended,       Types::Bool
+    attribute :active,          Types::Form::Bool
+    attribute :verified,        Types::Form::Bool
+    attribute :shared,          Types::Form::Bool
+    attribute :suspended,       Types::Form::Bool
 
     attribute :last_login_at,   Types::Json::Time
     attribute :created_at,      Types::Json::Time

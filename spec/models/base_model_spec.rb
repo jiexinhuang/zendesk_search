@@ -20,6 +20,15 @@ RSpec.describe ZendeskSearch::BaseModel do
   let(:disabled) { false }
   let(:tags) { ['portuguese', 'footballer', 'forward', 'Real Marid'] }
 
+  describe '.attribute_type' do
+    it 'returns possible attribute class name for given attribute' do
+      expect(TestModel.attribute_type(:_id)).to eq 'NilClass | Integer'
+      expect(TestModel.attribute_type(:name)).to eq 'String'
+      expect(TestModel.attribute_type(:disabled)).to eq 'TrueClass | FalseClass'
+      expect(TestModel.attribute_type(:tags)).to eq 'Array'
+    end
+  end
+
   describe '#match?' do
     subject(:match) { test_model.match?(query_hash) }
 

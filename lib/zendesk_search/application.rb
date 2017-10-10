@@ -26,7 +26,11 @@ module ZendeskSearch
         attribute_names = model_class.attribute_names
 
         # Now allow user to multi select attributes to search for
-        selected_attributes = prompt.multi_select("Select attributes to search on #{model_name}", attribute_names, per_page: attribute_names.size)
+        selected_attributes = []
+        while(selected_attributes.empty?) do
+          selected_attributes = prompt.multi_select("Select attributes to search on #{model_name}", attribute_names, per_page: attribute_names.size)
+          puts 'Please select at least one attribute as search filter' if selected_attributes.empty?
+        end
 
         # Capture values to search for selected attributes
         query_hash = {}

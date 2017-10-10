@@ -42,7 +42,7 @@ module ZendeskSearch
         # Now use search params to get result
         results = search(model_name, query_hash)
         if results.empty?
-          puts 'not result found'
+          puts 'No result found'
         else
           results.each do |row|
             table = TTY::Table.new do |t|

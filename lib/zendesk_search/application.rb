@@ -35,7 +35,7 @@ module ZendeskSearch
         # Capture values to search for selected attributes
         query_hash = {}
         selected_attributes.each do |attr|
-          search_value = prompt.ask("Please enter search value for #{attr}")
+          search_value = prompt.ask("Please enter search value for #{attr}, or press Enter to search for records with empty value")
           query_hash[attr] = search_value
         end
 

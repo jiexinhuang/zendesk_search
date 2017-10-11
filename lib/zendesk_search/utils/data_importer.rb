@@ -8,7 +8,7 @@ module ZendeskSearch
         records = json_array.map do |data_hash|
           model_class.new(data_hash)
         end
-        ZendeskSearch::DataSet.new(name: model_name, records: records)
+        ZendeskSearch::DataSet.new(name: model_name, records: records, model_class: model_class)
       end
     end
   end

@@ -5,7 +5,9 @@ RSpec.describe ZendeskSearch::DataSet do
   let(:record_3) { double }
 
   let(:name) { "User" }
-  subject(:data_set) { ZendeskSearch::DataSet.new(name: name, records: records) }
+  let(:model_class) { double(index: []) }
+  subject(:data_set) { ZendeskSearch::DataSet.new(name: name, records: records, model_class: model_class) }
+
 
   describe 'given initialized DataSet' do
     its(:name) { is_expected.to eq name }
@@ -13,12 +15,14 @@ RSpec.describe ZendeskSearch::DataSet do
   end
 
   describe '#search' do
-    let(:query_hash) { double }
+    let(:matching_model) { double }
+    let(:query_hash) { { _id: 1, name: 'John' } }
     subject(:search) { data_set.search(query_hash) }
     before do
-      allow(record_1).to receive(:match?).with(query_hash).and_return(true)
-      allow(record_2).to receive(:match?).with(query_hash).and_return(false)
-      allow(record_3).to receive(:match?).with(query_hash).and_return(true)
+      allow(model_class).to receive(:new).and_return(matching_model)
+      allow(record_1).to receive(:match?).with(matching_model, [:_id, :name]).and_return(true)
+      allow(record_2).to receive(:match?).with(matching_model, [:_id, :name]).and_return(false)
+      allow(record_3).to receive(:match?).with(matching_model, [:_id, :name]).and_return(true)
     end
 
     it 'returns records that match with query hash' do
